@@ -14,17 +14,6 @@ p6df::modules::jira::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::jira::external::brew()
-#
-#>
-######################################################################
-p6df::modules::jira::external::brew() {
-
-}
-
-######################################################################
-#<
-#
 # Function: p6df::modules::jira::langs()
 #
 #>
@@ -34,7 +23,6 @@ p6df::modules::jira::langs() {
     npm install -g jira-cli
 }
 
-# ~/.jira-cli.json
 ######################################################################
 #<
 #
@@ -44,15 +32,6 @@ p6df::modules::jira::langs() {
 ######################################################################
 p6df::modules::jira::home::symlink() {
 
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::jira::init()
-#
-#>
-######################################################################
-p6df::modules::jira::init() {
-
+  echo ln -fs $P6_DFZ_P6M7G8_SRC_DIR/p6df-jira/share/.jira-cli.json
+#  ln -fs $P6_DFZ_P6M7G8_SRC_DIR/p6df-jira/share/.jira-cli.json
 }
