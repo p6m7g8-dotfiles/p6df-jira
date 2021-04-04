@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/p6m7g8/p6df-jira/compare/v1.1.0...v1.1.1) (2021-04-04)
+
+
+* **link:** remove rendundant symlinks; echo for now ([#14](https://github.com/p6m7g8/p6df-jira/issues/14)) ([e8b7b02](https://github.com/p6m7g8/p6df-jira/commit/e8b7b02dcc4648f32bcd6b23b0b4002ddeedbdac))
+* **README:** updates generator ([#13](https://github.com/p6m7g8/p6df-jira/issues/13)) ([b659ddf](https://github.com/p6m7g8/p6df-jira/commit/b659ddf3b7162399852cf1102a33002a91a24fdd))
+* Coc -> .github ([47348c6](https://github.com/p6m7g8/p6df-jira/commit/47348c6e2b084b1648d68c0ffb0cab43573edcb9))
+
 ## [1.1.0](https://github.com/p6m7g8/p6df-jira/compare/v1.0.0...v1.1.0) (2020-12-06)
 
 
