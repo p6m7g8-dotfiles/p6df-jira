@@ -36,7 +36,7 @@ p6df::modules::jira::langs() {
 ######################################################################
 p6df::modules::jira::home::symlink() {
 
-  p6_file_symlink "$P6_DFZ_P6M7G8_SRC_DIR/p6df-jira/share/.jira-cli.json" .jira-cli.json
+    p6_file_symlink "$P6_DFZ_P6M7G8_SRC_DIR/p6df-jira/share/.jira-cli.json" .jira-cli.json
 
-  p6_return_void
+    p6_return_void
 }
