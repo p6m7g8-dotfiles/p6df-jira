@@ -58,6 +58,43 @@ p6df::modules::jira::aliases::init() {
 ######################################################################
 #<
 #
+# Function: str str = p6df::modules::jira::prompt::mod()
+#
+#  Returns:
+#	str - str
+#
+#  Environment:	 ATLASSIAN_API_TOKEN ATLASSIAN_SITE JIRA_API_TOKEN JIRA_HOST P6_DFZ_PROFILE_JIRA
+#>
+######################################################################
+p6df::modules::jira::prompt::mod() {
+  local str
+
+  if p6_string_blank_NOT "$P6_DFZ_PROFILE_JIRA"; then
+    if p6_string_blank_NOT "$ATLASSIAN_SITE"; then
+      str="jira:\t\t  $P6_DFZ_PROFILE_JIRA:"
+      str=$(p6_string_append "$str" "$ATLASSIAN_SITE" " ")
+    elif p6_string_blank_NOT "$JIRA_HOST"; then
+      str="jira:\t\t  $P6_DFZ_PROFILE_JIRA:"
+      str=$(p6_string_append "$str" "$JIRA_HOST" " ")
+    fi
+
+    if p6_string_blank_NOT "$ATLASSIAN_EMAIL"; then
+      str=$(p6_string_append "$str" "$ATLASSIAN_EMAIL" "/")
+    fi
+    if p6_string_blank_NOT "$ATLASSIAN_API_TOKEN"; then
+      str=$(p6_string_append "$str" "api" "/")
+    fi
+    if p6_string_blank_NOT "$JIRA_API_TOKEN"; then
+      str=$(p6_string_append "$str" "japi" "/")
+    fi
+  fi
+
+  p6_return_str "$str"
+}
+
+######################################################################
+#<
+#
 # Function: p6df::modules::jira::profile::on(profile, site, email, token)
 #
 #  Args:
