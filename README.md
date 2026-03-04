@@ -17,7 +17,7 @@
 
 ## Summary
 
-Install and configure Jira, Confluence, and Figma CLIs for shell and Codex usage.
+Install and configure Jira CLI for shell and Codex usage.
 
 ## Contributing
 
@@ -40,22 +40,16 @@ Install and configure Jira, Confluence, and Figma CLIs for shell and Codex usage
 - `p6df::modules::jira::home::symlink()`
 - `p6df::modules::jira::langs()`
 - `p6df::modules::jira::profile::off()`
-- `p6df::modules::jira::profile::on(profile, site, email, token, figma_token)`
+- `p6df::modules::jira::profile::on(profile, site, email, token)`
 
 ## ENV
 
-- Atlassian/Jira/Confluence:
+- Atlassian/Jira:
   - `ATLASSIAN_SITE`
   - `ATLASSIAN_EMAIL`
   - `ATLASSIAN_API_TOKEN`
   - `JIRA_HOST`
   - `JIRA_API_TOKEN`
-  - `CONFLUENCE_DOMAIN`
-  - `CONFLUENCE_EMAIL`
-  - `CONFLUENCE_API_TOKEN`
-- Figma:
-  - `FIGMA_API_TOKEN`
-  - `FIGMA_TOKEN`
 - Dotfiles profile:
   - `P6_DFZ_PROFILE_JIRA`
 
