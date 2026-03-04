@@ -67,24 +67,30 @@ p6df::modules::jira::aliases::init() {
 #>
 ######################################################################
 p6df::modules::jira::prompt::mod() {
-  local str
+  local str=""
+  local profile="${P6_DFZ_PROFILE_JIRA:-}"
+  local site="${ATLASSIAN_SITE:-}"
+  local host="${JIRA_HOST:-}"
+  local email="${ATLASSIAN_EMAIL:-}"
+  local atlassian_api="${ATLASSIAN_API_TOKEN:-}"
+  local jira_api="${JIRA_API_TOKEN:-}"
 
-  if p6_string_blank_NOT "$P6_DFZ_PROFILE_JIRA"; then
-    if p6_string_blank_NOT "$ATLASSIAN_SITE"; then
-      str="jira:\t\t  $P6_DFZ_PROFILE_JIRA:"
-      str=$(p6_string_append "$str" "$ATLASSIAN_SITE" " ")
-    elif p6_string_blank_NOT "$JIRA_HOST"; then
-      str="jira:\t\t  $P6_DFZ_PROFILE_JIRA:"
-      str=$(p6_string_append "$str" "$JIRA_HOST" " ")
+  if p6_string_blank_NOT "$profile"; then
+    str="jira:\t\t  ${profile}:"
+
+    if p6_string_blank_NOT "$site"; then
+      str=$(p6_string_append "$str" "$site" " ")
+    elif p6_string_blank_NOT "$host"; then
+      str=$(p6_string_append "$str" "$host" " ")
     fi
 
-    if p6_string_blank_NOT "$ATLASSIAN_EMAIL"; then
-      str=$(p6_string_append "$str" "$ATLASSIAN_EMAIL" "/")
+    if p6_string_blank_NOT "$email"; then
+      str=$(p6_string_append "$str" "$email" "/")
     fi
-    if p6_string_blank_NOT "$ATLASSIAN_API_TOKEN"; then
+    if p6_string_blank_NOT "$atlassian_api"; then
       str=$(p6_string_append "$str" "api" "/")
     fi
-    if p6_string_blank_NOT "$JIRA_API_TOKEN"; then
+    if p6_string_blank_NOT "$jira_api"; then
       str=$(p6_string_append "$str" "japi" "/")
     fi
   fi
