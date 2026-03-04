@@ -41,6 +41,7 @@ Install and configure Jira CLI for shell and Codex usage.
 - `p6df::modules::jira::langs()`
 - `p6df::modules::jira::profile::off()`
 - `p6df::modules::jira::profile::on(profile, site, email, token)`
+- `str str = p6df::modules::jira::prompt::mod()`
 
 ## ENV
 
