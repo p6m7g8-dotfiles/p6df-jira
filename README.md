@@ -56,6 +56,8 @@ Install and configure Jira, Confluence, and Figma CLIs for shell and Codex usage
 - Figma:
   - `FIGMA_API_TOKEN`
   - `FIGMA_TOKEN`
+- Dotfiles profile:
+  - `P6_DFZ_PROFILE_JIRA`
 
 ## Hierarchy
 
