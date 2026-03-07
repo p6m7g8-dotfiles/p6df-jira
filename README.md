@@ -7,6 +7,7 @@
 - [Contributing](#contributing)
 - [Code of Conduct](#code-of-conduct)
 - [Usage](#usage)
+  - [Aliases](#aliases)
   - [Functions](#functions)
 - [Hierarchy](#hierarchy)
 - [Author](#author)
@@ -17,7 +18,8 @@
 
 ## Summary
 
-Install and configure Jira CLI for shell and Codex usage.
+Install and configure Jira CLI for shell usage, with profile switching and
+MCP server (`@modelcontextprotocol/server-atlassian`) for AI-driven issue management.
 
 ## Contributing
 
@@ -29,6 +31,10 @@ Install and configure Jira CLI for shell and Codex usage.
 
 ## Usage
 
+### Aliases
+
+- `jcli` -> `jira`
+
 ### Functions
 
 #### p6df-jira
@@ -39,29 +45,25 @@ Install and configure Jira CLI for shell and Codex usage.
 - `p6df::modules::jira::deps()`
 - `p6df::modules::jira::home::symlink()`
 - `p6df::modules::jira::langs()`
+- `p6df::modules::jira::mcp()`
 - `p6df::modules::jira::profile::off()`
 - `p6df::modules::jira::profile::on(profile, site, email, token)`
+  - Args:
+    - profile
+    - site
+    - email
+    - token
 - `str str = p6df::modules::jira::prompt::mod()`
-
-## ENV
-
-- Atlassian/Jira:
-  - `ATLASSIAN_SITE`
-  - `ATLASSIAN_EMAIL`
-  - `ATLASSIAN_API_TOKEN`
-  - `JIRA_HOST`
-  - `JIRA_API_TOKEN`
-- Dotfiles profile:
-  - `P6_DFZ_PROFILE_JIRA`
 
 ## Hierarchy
 
 ```text
 .
 ├── init.zsh
-└── README.md
+├── README.md
+└── share
 
-1 directory, 2 files
+2 directories, 2 files
 ```
 
 ## Author

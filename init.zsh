@@ -31,7 +31,7 @@ p6df::modules::jira::langs() {
 #
 # Function: p6df::modules::jira::home::symlink()
 #
-#  Environment:	 P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
+#  Environment:	 HOME P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
 #>
 ######################################################################
 p6df::modules::jira::home::symlink() {
@@ -63,7 +63,7 @@ p6df::modules::jira::aliases::init() {
 #  Returns:
 #	str - str
 #
-#  Environment:	 ATLASSIAN_API_TOKEN ATLASSIAN_SITE JIRA_API_TOKEN JIRA_HOST P6_DFZ_PROFILE_JIRA
+#  Environment:	 ATLASSIAN_API_TOKEN ATLASSIAN_EMAIL ATLASSIAN_SITE JIRA_API_TOKEN JIRA_HOST P6_DFZ_PROFILE_JIRA
 #>
 ######################################################################
 p6df::modules::jira::prompt::mod() {
@@ -150,6 +150,20 @@ p6df::modules::jira::profile::off() {
 
   p6_env_export_un JIRA_HOST
   p6_env_export_un JIRA_API_TOKEN
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::jira::mcp()
+#
+#>
+######################################################################
+p6df::modules::jira::mcp() {
+
+  p6_js_npm_global_install "@modelcontextprotocol/server-atlassian"
 
   p6_return_void
 }
