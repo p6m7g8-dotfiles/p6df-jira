@@ -163,7 +163,7 @@ p6df::modules::jira::profile::off() {
 ######################################################################
 p6df::modules::jira::mcp() {
 
-  p6_js_npm_global_install "@modelcontextprotocol/server-atlassian"
+  p6_js_npm_global_install "@rokealvo/jira-mcp"
 
   p6_return_void
 }
