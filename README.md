@@ -18,8 +18,9 @@
 
 ## Summary
 
-Install and configure Jira CLI for shell usage, with profile switching and
-MCP server (`@modelcontextprotocol/server-atlassian`) for AI-driven issue management.
+p6df module for Jira: CLI tools (`@pchuri/jira-cli`), profile switching
+(`JIRA_API_TOKEN`, `JIRA_USER_EMAIL`, `JIRA_URL`), and MCP server
+(`@rokealvo/jira-mcp`) for AI-driven issue management.
 
 ## Contributing
 
