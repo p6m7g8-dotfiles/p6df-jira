@@ -18,9 +18,9 @@
 
 ## Summary
 
-p6df module for Jira: CLI tools (`@pchuri/jira-cli`), profile switching
-(`JIRA_API_TOKEN`, `JIRA_USER_EMAIL`, `JIRA_URL`), and MCP server
-(`mcp-atlassian` via brew) for AI-driven issue management.
+p6df module for Jira: CLI tools, profile switching
+(`ATLASSIAN_SITE`, `ATLASSIAN_EMAIL`, `ATLASSIAN_API_TOKEN`, `JIRA_HOST`, `JIRA_API_TOKEN`), and MCP server
+(`@rokealvo/jira-mcp` via npm) for AI-driven issue management.
 
 ## Contributing
 

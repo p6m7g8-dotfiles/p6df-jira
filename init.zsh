@@ -163,7 +163,7 @@ p6df::modules::jira::profile::off() {
 ######################################################################
 p6df::modules::jira::mcp() {
 
-  p6df::core::homebrew::cli::brew::install mcp-atlassian
+  p6_js_npm_global_install "@rokealvo/jira-mcp"
 
   p6_return_void
 }
