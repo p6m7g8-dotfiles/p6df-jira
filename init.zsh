@@ -9,6 +9,8 @@
 p6df::modules::jira::deps() {
     ModuleDeps=(
         p6m7g8-dotfiles/p6df-js
+        netresearch/jira-skill
+        langpingxue/atlassian-skills
     )
 }
 
