@@ -46,6 +46,24 @@ p6df::modules::jira::home::symlink() {
 ######################################################################
 #<
 #
+# Function: p6df::modules::jira::home::symlinks()
+#
+#  Environment:	 HOME P6_DFZ_SRC_DIR
+#>
+######################################################################
+p6df::modules::jira::home::symlinks() {
+
+  p6_file_symlink "$P6_DFZ_SRC_DIR/netresearch/jira-skill/skills/jira-communication"                                         "$HOME/.claude/skills/jira-communication"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/netresearch/jira-skill/skills/jira-syntax"                                                "$HOME/.claude/skills/jira-syntax"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/langpingxue/atlassian-skills/atlassian-skills"                                            "$HOME/.claude/skills/atlassian-skills"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/langpingxue/atlassian-skills/atlassian-readonly-skills"                                   "$HOME/.claude/skills/atlassian-readonly-skills"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
 # Function: p6df::modules::jira::aliases::init()
 #
 #>
