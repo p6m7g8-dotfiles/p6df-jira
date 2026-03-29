@@ -8,9 +8,9 @@
 ######################################################################
 p6df::modules::jira::deps() {
     ModuleDeps=(
+        p6m7g8-dotfiles/p6df-atlassian
         p6m7g8-dotfiles/p6df-js
         netresearch/jira-skill
-        langpingxue/atlassian-skills
     )
 }
 
@@ -53,10 +53,8 @@ p6df::modules::jira::home::symlink() {
 ######################################################################
 p6df::modules::jira::home::symlinks() {
 
-  p6_file_symlink "$P6_DFZ_SRC_DIR/netresearch/jira-skill/skills/jira-communication"                                         "$HOME/.claude/skills/jira-communication"
-  p6_file_symlink "$P6_DFZ_SRC_DIR/netresearch/jira-skill/skills/jira-syntax"                                                "$HOME/.claude/skills/jira-syntax"
-  p6_file_symlink "$P6_DFZ_SRC_DIR/langpingxue/atlassian-skills/atlassian-skills"                                            "$HOME/.claude/skills/atlassian-skills"
-  p6_file_symlink "$P6_DFZ_SRC_DIR/langpingxue/atlassian-skills/atlassian-readonly-skills"                                   "$HOME/.claude/skills/atlassian-readonly-skills"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/netresearch/jira-skill/skills/jira-communication" "$HOME/.claude/skills/jira-communication"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/netresearch/jira-skill/skills/jira-syntax"        "$HOME/.claude/skills/jira-syntax"
 
   p6_return_void
 }
@@ -83,32 +81,19 @@ p6df::modules::jira::aliases::init() {
 #  Returns:
 #	str - str
 #
-#  Environment:	 ATLASSIAN_API_TOKEN ATLASSIAN_EMAIL ATLASSIAN_SITE JIRA_API_TOKEN JIRA_HOST P6_DFZ_PROFILE_JIRA
+#  Environment:	 JIRA_API_TOKEN JIRA_HOST P6_DFZ_PROFILE_JIRA
 #>
 ######################################################################
 p6df::modules::jira::prompt::mod() {
   local str=""
-  local profile="${P6_DFZ_PROFILE_JIRA:-}"
-  local site="${ATLASSIAN_SITE:-}"
-  local host="${JIRA_HOST:-}"
-  local email="${ATLASSIAN_EMAIL:-}"
-  local atlassian_api="${ATLASSIAN_API_TOKEN:-}"
-  local jira_api="${JIRA_API_TOKEN:-}"
+  local profile="$P6_DFZ_PROFILE_JIRA"
+  local host="$JIRA_HOST"
+  local jira_api="$JIRA_API_TOKEN"
 
   if p6_string_blank_NOT "$profile"; then
     str="jira:\t\t  ${profile}:"
-
-    if p6_string_blank_NOT "$site"; then
-      str=$(p6_string_append "$str" "$site" " ")
-    elif p6_string_blank_NOT "$host"; then
+    if p6_string_blank_NOT "$host"; then
       str=$(p6_string_append "$str" "$host" " ")
-    fi
-
-    if p6_string_blank_NOT "$email"; then
-      str=$(p6_string_append "$str" "$email" "/")
-    fi
-    if p6_string_blank_NOT "$atlassian_api"; then
-      str=$(p6_string_append "$str" "api" "/")
     fi
     if p6_string_blank_NOT "$jira_api"; then
       str=$(p6_string_append "$str" "japi" "/")
@@ -121,33 +106,22 @@ p6df::modules::jira::prompt::mod() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::jira::profile::on(profile, site, email, token)
+# Function: p6df::modules::jira::profile::on(profile, code)
 #
 #  Args:
 #	profile -
-#	site -
-#	email -
-#	token -
+#	code - shell code block (export JIRA_HOST=... JIRA_API_TOKEN=...)
 #
-#  Environment:	 ATLASSIAN_API_TOKEN ATLASSIAN_EMAIL ATLASSIAN_SITE JIRA_API_TOKEN JIRA_HOST P6_DFZ_PROFILE_JIRA
+#  Environment:	 JIRA_API_TOKEN JIRA_HOST P6_DFZ_PROFILE_JIRA
 #>
 ######################################################################
 p6df::modules::jira::profile::on() {
   local profile="$1"
-  local site="$2"
-  local email="$3"
-  local token="$4"
+  local code="$2"
+
+  p6_run_code "$code"
 
   p6_env_export "P6_DFZ_PROFILE_JIRA" "$profile"
-
-  # Atlassian shared auth
-  p6_env_export "ATLASSIAN_SITE" "$site"
-  p6_env_export "ATLASSIAN_EMAIL" "$email"
-  p6_env_export "ATLASSIAN_API_TOKEN" "$token"
-
-  # Jira CLI common vars
-  p6_env_export "JIRA_HOST" "$site"
-  p6_env_export "JIRA_API_TOKEN" "$token"
 
   p6_return_void
 }
@@ -155,21 +129,19 @@ p6df::modules::jira::profile::on() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::jira::profile::off()
+# Function: p6df::modules::jira::profile::off(code)
 #
-#  Environment:	 ATLASSIAN_API_TOKEN ATLASSIAN_EMAIL ATLASSIAN_SITE JIRA_API_TOKEN JIRA_HOST P6_DFZ_PROFILE_JIRA
+#  Args:
+#	code - shell code block previously passed to profile::on
+#
+#  Environment:	 JIRA_API_TOKEN JIRA_HOST P6_DFZ_PROFILE_JIRA
 #>
 ######################################################################
 p6df::modules::jira::profile::off() {
+  local code="$1"
 
+  p6_env_unset_from_code "$code"
   p6_env_export_un P6_DFZ_PROFILE_JIRA
-
-  p6_env_export_un ATLASSIAN_SITE
-  p6_env_export_un ATLASSIAN_EMAIL
-  p6_env_export_un ATLASSIAN_API_TOKEN
-
-  p6_env_export_un JIRA_HOST
-  p6_env_export_un JIRA_API_TOKEN
 
   p6_return_void
 }
@@ -184,6 +156,9 @@ p6df::modules::jira::profile::off() {
 p6df::modules::jira::mcp() {
 
   p6_js_npm_global_install "@rokealvo/jira-mcp"
+
+  p6df::modules::anthropic::mcp::server::add "jira" "npx" "-y" "@rokealvo/jira-mcp"
+  p6df::modules::openai::mcp::server::add "jira" "npx" "-y" "@rokealvo/jira-mcp"
 
   p6_return_void
 }
