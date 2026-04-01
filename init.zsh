@@ -92,5 +92,5 @@ p6df::modules::jira::mcp() {
 ######################################################################
 p6df::modules::jira::profile::mod() {
 
-  p6_return_words 'jira' "$"
+  p6_return_words 'jira' "$JIRA_API_TOKEN"
 }
