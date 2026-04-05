@@ -17,13 +17,15 @@ p6df::modules::jira::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::jira::langs()
+# Function: p6df::modules::jira::aliases::init()
 #
 #>
 ######################################################################
-p6df::modules::jira::langs() {
+p6df::modules::jira::aliases::init() {
 
-    p6_js_npm_global_install "@pchuri/jira-cli"
+    local _module="$1"
+    local _dir="$2"
+    p6_alias "jcli" "jira"
 
     p6_return_void
 }
@@ -49,15 +51,13 @@ p6df::modules::jira::home::symlinks() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::jira::aliases::init()
+# Function: p6df::modules::jira::langs()
 #
 #>
 ######################################################################
-p6df::modules::jira::aliases::init() {
+p6df::modules::jira::langs() {
 
-    local _module="$1"
-    local _dir="$2"
-    p6_alias "jcli" "jira"
+    p6_js_npm_global_install "@pchuri/jira-cli"
 
     p6_return_void
 }
