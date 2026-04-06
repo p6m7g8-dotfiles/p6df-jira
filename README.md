@@ -18,9 +18,7 @@
 
 ## Summary
 
-p6df module for Jira: CLI tools, profile switching
-(`ATLASSIAN_SITE`, `ATLASSIAN_EMAIL`, `ATLASSIAN_API_TOKEN`, `JIRA_HOST`, `JIRA_API_TOKEN`), and MCP server
-(`@rokealvo/jira-mcp` via npm) for AI-driven issue management.
+TODO: Add a short summary of this module.
 
 ## Contributing
 
@@ -42,19 +40,15 @@ p6df module for Jira: CLI tools, profile switching
 
 ##### p6df-jira/init.zsh
 
-- `p6df::modules::jira::aliases::init()`
+- `p6df::modules::jira::aliases::init(_module, _dir)`
+  - Args:
+    - _module
+    - _dir
 - `p6df::modules::jira::deps()`
-- `p6df::modules::jira::home::symlink()`
+- `p6df::modules::jira::home::symlinks()`
 - `p6df::modules::jira::langs()`
 - `p6df::modules::jira::mcp()`
-- `p6df::modules::jira::profile::off()`
-- `p6df::modules::jira::profile::on(profile, site, email, token)`
-  - Args:
-    - profile
-    - site
-    - email
-    - token
-- `str str = p6df::modules::jira::prompt::mod()`
+- `words jira = p6df::modules::jira::profile::mod()`
 
 ## Hierarchy
 

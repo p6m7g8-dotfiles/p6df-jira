@@ -17,7 +17,11 @@ p6df::modules::jira::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::jira::aliases::init()
+# Function: p6df::modules::jira::aliases::init(_module, _dir)
+#
+#  Args:
+#	_module -
+#	_dir -
 #
 #>
 ######################################################################
@@ -82,10 +86,10 @@ p6df::modules::jira::mcp() {
 ######################################################################
 #<
 #
-# Function: words jira $JIRA_API_TOKEN = p6df::modules::jira::profile::mod()
+# Function: words jira = p6df::modules::jira::profile::mod()
 #
 #  Returns:
-#	words - jira $JIRA_API_TOKEN
+#	words - jira
 #
 #  Environment:	 JIRA_API_TOKEN
 #>
